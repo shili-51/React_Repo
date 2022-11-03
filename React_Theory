@@ -2,3 +2,13 @@ React is a javascript library. It is an open source library for building user in
 It is not a framework.
 React does not focus on routing or other aspects of our web application like HTTP requests.
 
+
+Components describe a part of the user interface
+
+They are re-usable and can be nested inside other components
+
+There are two types of components :
+1)Stateless Functional Components
+2)Stateful class Components
+
+Functional Components - are just javascript functions. They can optionally receive an object of properties(props) as input and returns HTML(JSX) as output which describes UI.
