@@ -12,3 +12,6 @@ There are two types of components :
 2)Stateful class Components
 
 Functional Components - are just javascript functions. They can optionally receive an object of properties(props) as input and returns HTML(JSX) as output which describes UI.
+
+Class Components - class components maintain a private internal state that is it can maintain some private information associated to that component and use that information 
+to describe user interface.
