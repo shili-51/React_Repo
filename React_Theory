@@ -15,3 +15,22 @@ Functional Components - are just javascript functions. They can optionally recei
 
 Class Components - class components maintain a private internal state that is it can maintain some private information associated to that component and use that information 
 to describe user interface.
+
+
+
+javascript XML - JSX - allows to write dynamic html, its actually javascript but formatted like HTML, we can embed javascript expressions variables etc
+extension to havascript language syntax
+write XML-like code for elements and components
+JSX tags have a tag name, attributes and childeren
+not necessary to write react applications
+JSX makes your react code simpler and elegant
+JSX ultimately transpiles to pure javascript which is understood by the browsers.
+
+In HTML we write class but in JSX we use className
+In HTML we write <label for='names'> but in JSX we use <lable htmlFor='names'>
+
+
+Props - instead of using same component multiple times, its best practice to reuse the same component (for example writing component greet 3 times to greet people, its better to just pass name of person you want to greet
+reusing the same component could greet 3 different people instead of writing the component repeatedly).
+its the optional input that our component can accept.
+It allows the component to become dynamic.
