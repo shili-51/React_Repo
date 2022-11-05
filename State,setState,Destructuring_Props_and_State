@@ -1,0 +1,83 @@
+State
+
+every react component returns jsx which describes user interface.
+second way to influence what is rendered on screen is state.
+state is managed within the component.
+state can be changed.
+functional components - useState Hook
+class components - this.state 
+
+state is an object that is privately maintained inside a component.
+state can influence what is rendered in the browser
+state can be changed within the component. 
+
+for declaring state we need to declare a contructor and a super method inside it. 
+and on clicking any button we can change the state of the object with the help of onCLick event Listener.
+
+We use state as it can be changed with the help of event handlers but props can not be changed.
+
+initialise state in the constructor - rconst - snippet to type in vs code for autodeclaring
+
+We should never modify the state directly as doing so will only change the values in console and not on UI.
+The only place where we can assign this.state is the constructor. Any other time to change the state setstate method has to be used.
+setstate will make the react know that it has to re render the component.
+
+whenever you have to update a state based on previous state, we need to pass a function as an argument to setstate method instead of passing in an object.
+
+
+setState
+
+Always make use of setState and never modify the state directly.
+Code has to be executed after the state has been updated? Place that code in the call back function which is the second argument to the setState method
+when you have to update state based on the previous state value, pass in a function as an argument instead of the regular object.
+
+
+Destructuring props and state in react
+
+Destructuring - makes it possible to unpack values from arrays or properties from objects into distinct variables.
+In react Destructuring props and state improves code readability.
+
+To extract name,heroName from props in Functional Components there are two ways : 
+Greet - Functional Component
+
+const Greet = ({name,heroName}) => {
+   return(
+        <div>
+        <h1>Hello {name} aka {heroName}</h1>
+        </div>
+    )
+}
+
+
+OR
+
+const Greet = props => {
+   const {name, heroName} = props
+   return(
+        <div>
+        <h1>Hello {name} aka {heroName}</h1>
+        </div>
+    )
+}
+
+
+
+
+To extract name,heroName from props in classComponent :
+
+
+class Welcome extends Component {
+    
+    render(){
+        const {name,heroName} = this.props
+        return (
+            <h1>
+                Welcome {name} aka {heroName}
+            </h1>
+        )
+    }
+}
+
+
+
+
