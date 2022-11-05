@@ -1,0 +1,36 @@
+Event Handler is a function and not a function call.
+
+
+snippet for functional compoent - rfce
+Event Handling in Functional Component
+
+function FunctionClick() {
+
+    function clickHandler(){
+        console.log('Button clicked')
+    }
+  return (
+    <div>
+      <button onClick = {clickHandler}>Click</button>
+    </div>
+  )
+}
+
+
+snippet for class compoent - rce
+Event Handling in Class Component
+
+class ClassClick extends Component {
+
+    clickHandler(){
+        console.log('clicked the button')
+    }
+  render() {
+    return (
+      <div>
+        <button onClick={this.clickHandler}>Click me</button>
+      </div>
+    )
+  }
+}
+
