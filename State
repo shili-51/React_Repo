@@ -6,3 +6,12 @@ state is managed within the component.
 state can be changed.
 functional components - useState Hook
 class components - this.state 
+
+state is an object that is privately maintained inside a component.
+state can influence what is rendered in the browser
+state can be changed within the component. 
+
+for declaring state we need to declare a contructor and a super method inside it.
+and on clicking any button we can change the state of the object with the help of onCLick event Listener.
+
+We use state as it can be changed with the help of event handlers but props can not be changed.
