@@ -34,3 +34,11 @@ Props - instead of using same component multiple times, its best practice to reu
 reusing the same component could greet 3 different people instead of writing the component repeatedly).
 its the optional input that our component can accept.
 It allows the component to become dynamic.
+
+-> to specify props for a component, we specify them as attributes.
+adding a paramter to the functional component
+
+These are the properties which you can pass to a component.when specifying components you can basically add additional attributes. 
+React is going to bundle all such attributes into an object which we by convention call props.
+in component defination we can access any attribute we want to and render any dynamic content.
+Props are immutable , value cannot be changed
