@@ -45,8 +45,6 @@ Props are immutable , value cannot be changed
 
 ->get passed into the component                     
 ->function parameters                                               
-->parents usually passes down the props to child                     
-component, props are immutable parents own the props 
-and cannot be changed by the children   
+->parents usually passes down the props to child component, props are immutable parents own the props and cannot be changed by the children   
 -> function components - props                                      
    class components - this.props
