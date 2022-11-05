@@ -1,0 +1,44 @@
+Any data in the parent component passed as props is availbale in the children component. Now if a child component want to communicate with the parent component. 
+For this also we use props, but this time we pass in reference to a method as props to a child component.
+For example we click on the button in child component, want to execute method in parent component i.e. a child component calls a parent component's method and this is achieved
+with the help of props.
+
+
+Difference is we pass the method itself as a prop to the child component. so that child component can execute method in parent component.
+
+ParentComponent.js
+class ParentComponent extends Component {
+
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+         parentName : 'Parent'
+      }
+      this.greetParent = this.greetParent.bind(this)
+    }
+
+    greetParent() {
+        alert(`Hello ${this.state.parentName}`)
+    }
+    
+  render() {
+    return(
+        <div>
+            {/* passing greetParent method to prop greetHandler */}
+            <ChildComponent greetHandler = {this.greetParent}/>            --------------- passing prop to child component
+        </div>
+    )
+  }
+}
+
+
+ChildComponent.js
+function ChildComponent(props) {
+  return (
+    <div>
+      {/* <button onClick = {props.greetHandler}>Greet Parent</button> */}
+      <button onClick = {() => props.greetHandler('child')}>Greet Parent</button>
+    </div>
+  )
+}
