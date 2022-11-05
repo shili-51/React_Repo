@@ -1,0 +1,90 @@
+Event Handler is a function and not a function call.
+
+
+snippet for functional compoent - rfce
+Event Handling in Functional Component
+
+function FunctionClick() {
+
+    function clickHandler(){
+        console.log('Button clicked')
+    }
+  return (
+    <div>
+      <button onClick = {clickHandler}>Click</button>
+    </div>
+  )
+}
+
+
+snippet for class compoent - rce
+Event Handling in Class Component
+
+class ClassClick extends Component {
+
+    clickHandler(){
+        console.log('clicked the button')
+    }
+  render() {
+    return (
+      <div>
+        <button onClick={this.clickHandler}>Click me</button>
+      </div>
+    )
+  }
+}
+
+
+Binding Event Handlers
+this keyword is undefined in an event handler and that is the reason event binding is necessary in react class components.
+
+4 different ways to bind event handlers in react
+
+binding in render - not used due to performance implications
+arrow function in render - easiest way to pass the parameters, if your code doesnot involve re rendering nested children components - this approach is viable
+binding in the class constructor - best option right now
+class property as arrow functions - in experimental phase
+
+
+import React, { Component } from 'react'
+
+class EventBind extends Component {
+
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+         message : 'Hello'
+      }
+
+    //   this.clickHandler = this.clickHandler.bind(this)      ->binding in the class constructor
+    }
+
+    // clickHandler(){              -> binding in render, arrow function in render
+    //     this.setState({
+    //         message : 'Goodbye!'
+    //     })
+    //     console.log(this)
+    // }
+    clickHandler = () =>{            -> class property as arrow functions
+            this.setState({
+                message : 'Goodbye!'
+            })
+        }
+    
+  render() {
+    return (
+      <div>
+        <div>{this.state.message}</div>
+        {/* <button onClick={this.clickHandler.bind(this)}>Click</button> */} - binding in render
+        {/* <button onClick={() => this.clickHandler()}>Click</button> */} - arrow function in render
+        <button onClick={this.clickHandler}>Click</button> - binding in the class constructor, class property as arrow functions
+
+      </div>
+    )
+  }
+}
+
+export default EventBind
+
+
