@@ -1,0 +1,8 @@
+State
+
+every react component returns jsx which describes user interface.
+second way to influence what is rendered on screen is state.
+state is managed within the component.
+state can be changed.
+functional components - useState Hook
+class components - this.state 
