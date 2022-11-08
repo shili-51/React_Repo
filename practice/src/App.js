@@ -1,36 +1,43 @@
 import React, {Component} from 'react';
-import Navbar from './Components/Layout/Navbar';
-// import UserItem from './Components/Users/UserItem';
-import Users from './Components/Users/Users';
+import Greet from './Components/Greet';
+import Welcome from './Components/Welcome';
+import Message from './Components/Message';
+import Counter from './Components/Counter';
 import './App.css';
+import FunctionClick from './Components/FunctionClick';
+import ClassClick from './Components/ClassClick';
+import EventBind from './Components/EventBind';
+import ParentComponent from './Components/ParentComponent';
+import UserGreeting from './Components/UserGreeting';
+import NameList from './Components/NameList';
 
-
-//Functional Component
-// function App() {
-//   return (
-//     <div className="App">
-//       <h1>Hello from React</h1>
-//     </div>
-//   );
-// }
-
-//Class Component extending
-class App extends Component {
-  
-  //in order to return HTML
+ class App extends Component{
   render(){
     return (
       <div className="App">
-        {/* <h1>Hello from React</h1>
-        <h2>Goodbye</h2> */}
-        <Navbar/>
-        {/* <UserItem/> */}
-        <div className="container"></div>
-        <Users/>
+        {/* <ParentComponent/> */}
+        {/* <UserGreeting/> */}
+        <NameList/>
+        {/* <FunctionClick/>
+        <ClassClick/> */}
+        {/* <EventBind/> */}
+        {/* <Message/> */}
+        {/* <Counter/> */}
+        {/* <Greet name="Bruce" heroName="Batman">
+          <p>This is children</p>
+        </Greet> */}
+        {/* <Greet name="Diana" heroName="Superman"/> */}
+        {/* <button>Action</button>
+        <Greet name="Clark" heroName="Wonder Woman"/> */}
+        {/* <Welcome name="Bruce" heroName="Batman"/> */}
+        {/* <Welcome name="Diana" heroName="Superman"/>
+        <Welcome name="Clark" heroName="Wonder Woman"/> */}
       </div>
     );
   }
+ } 
   
-}
+  
+
 
 export default App;
