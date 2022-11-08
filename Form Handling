@@ -1,0 +1,137 @@
+Form elements whose value is controlled by react is called a controlled component.
+
+
+consider an input element, the input element can have a value, the input element's value can also change based on user interaction.
+<input type = 'text' value=           onChange=      />
+
+For example the user typing in his email address. How do we deal with values that can change within a component. We use state and setState.
+this.state = {
+     email:''
+}
+
+this.changeEmailHandler = (event) => {
+     this.setState({email: event.target.value})
+}
+
+
+So in a controlled component, the value of the input field is set to state property.
+<input type = 'text' value={this.state.email}           onChange=      />
+
+And we have onChange event fire whenever there is change in input field's value. In onChange handler we use the set state method to update the state.
+<input type = 'text' value={this.state.email}           onChange={this.changeEmailHandler}      />.
+
+
+When the state gets updated, the render method is called and the new state is assigned as a value to the input element
+React will always have the access to the component state which reflects the updated values of the form elements. That state object can than be used to submit the form data when needed.
+
+
+
+
+//it happens when we assign handler to onChange event
+    //the event itself is passed as a parameter to the handler
+    //from this event parameter passed we can extract the value of 
+    //the input element using event.target.value
+    //so anytime the input value, that value is captured using event.target.value
+    // we have to assign this captured value back to the state property
+    
+    
+    handleUsernameChange = (event) => {
+       this.setState({
+        username : event.target.value
+       })
+    }
+    
+    
+return (
+            <form>
+                <div>
+                    <label>Username</label>
+                    <input type='text' value={this.state.username}
+                        onChange={this.handleUsernameChange} />
+                </div>
+            </form>
+        )
+        
+To prevent page from refreshing and to prevent loss of entered data in UI ,when each time form is filled and submitted we simply add event.preventDefault() - 
+this will prevent the default behaviour of form submission.
+
+
+
+
+
+
+Code Form.js
+
+
+import React, { Component } from 'react'
+
+class Form extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            username: '',
+            comments: '',
+            topic: 'react'
+        }
+    }
+
+    //it happens when we assign handler to onChange event
+    //the event itself is passed as a parameter to the handler
+    //from this event parameter passed we can extract the value of 
+    //the input element using event.target.value
+    //so anytime the input value, that value is captured using event.target.value
+    // we have to assign this captured value back to the state property
+    handleUsernameChange = (event) => {
+       this.setState({
+        username : event.target.value
+       })
+    }
+
+    handleCommentsChange = (event) => {
+        this.setState({
+            comments : event.target.value
+        })
+    }
+
+    handleTopicChange = event =>{
+        this.setState({
+            topic : event.target.value
+        })
+    }
+
+    handleSubmit = event => {
+        alert(`${this.state.username} ${this.state.comments} ${this.state.topic}`)
+        event.preventDefault()
+    }
+
+    render() {
+
+        const {username, comments, topic} = this.state
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <div>
+                    <label>Username</label>
+                    <input type='text' value={username}
+                        onChange={this.handleUsernameChange} />
+                </div>
+                <div>
+                    <label>Comments</label>
+                    <textarea value={comments} onChange={this.handleCommentsChange}></textarea>
+                </div>
+                <div>
+                    <label>Topic</label>
+                    <select value={topic} onChange={this.handleTopicChange}>
+                        <option value="react">React</option>
+                        <option value="angular">Angular</option>
+                        <option value="vue">Vue</option>
+                    </select>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        )
+    }
+}
+
+export default Form
