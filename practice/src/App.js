@@ -10,14 +10,26 @@ import EventBind from './Components/EventBind';
 import ParentComponent from './Components/ParentComponent';
 import UserGreeting from './Components/UserGreeting';
 import NameList from './Components/NameList';
+import Stylesheet from './Components/Stylesheet';
+import Inline from './Components/Inline';
+import './appStyles.css'
+import styles from './appStyles.module.css'
+import Form from './Components/Form';
 
  class App extends Component{
   render(){
     return (
       <div className="App">
+        {/* error is className from appStyles.css */}
+        {/* <h1 className='error'>Error</h1> */}
+        <Form/>
+        {/* success is classname from appStyles.module.css */}
+        {/* <h1 className={styles.success}>Success</h1> */}
         {/* <ParentComponent/> */}
         {/* <UserGreeting/> */}
-        <NameList/>
+        {/* <NameList/> */}
+        {/* <Stylesheet primary={true}/> */}
+        {/* <Inline/> */}
         {/* <FunctionClick/>
         <ClassClick/> */}
         {/* <EventBind/> */}
