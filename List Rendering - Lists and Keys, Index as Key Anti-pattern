@@ -1,0 +1,31 @@
+Importance of Keys in React
+
+Explanation with demo - https://dev.to/francodalessio/understanding-the-importance-of-the-key-prop-in-react-3ag7
+
+key props are not accessible in the child components.
+Keys help react identify,which items in the list has changed or added or removed and plays a crucial role in handling UI updates efficiently.
+
+A "Key" is a special string attribute you need to include when creating list of elements.
+Keys give the elements a stable identity.
+Keys help React identify which items have changed, are added, or are removed.
+Help in efficient update of the user interface.
+
+Problem behind using index as a key - https://stackoverflow.com/questions/46735483/error-do-not-use-array-index-in-keys
+Suppose we have a list of 3 items and we are asked to add an item to top of list.
+
+Original List                       List having index as key when we add a new value 4 at starting of list
+index  ID    value                        index    ID     value
+0      1      1                            0        4       1    // when we add an element this value should be empty but values are shifted one step upward - this the the problem we encounter if we use index as key.
+1      2      2                            1        1       2
+2      3      3                            2        2       3
+3     --      ---                          3        3      ---
+
+Also it creates problem when sorting a list, the items values remain unaffected even if we sort the list.
+
+When to use Index as Key?
+
+1) The items in your list do not have a unique id.
+2) The list is a static list and will not change.
+3) The list will never be reordered or filtered.
+
+
