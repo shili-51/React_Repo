@@ -2,3 +2,47 @@
 2) Inline styling
 3) CSS Modules
 4) CSS in JS Libraries
+
+classes are locally scoped default. CSS kind of applies to every child component as well. In our case it gets applied to app component and the inline component (child component of app component).
+This leads to css conflicts.
+Css modules on the other hand because you reference the class Names using the styles variable, it can be used in the children component.
+
+
+In App.js - css stylesheet
+
+import './appStyles.css'
+
+return (
+<div className="App">
+
+{/* error is className from appStyles.css */}
+        <h1 className='error'>Error</h1>        //In our case it gets applied to app component and the inline component (child component of app component).
+
+</div>
+)
+
+
+<Inline/>  ----------------------------  child component of App.js
+
+In App.js - css modules
+
+import styles from './appStyles.module.css'
+
+
+return (
+<div className="App">
+
+{/* success is classname from appStyles.module.css */}
+        <h1 className={styles.success}>Success</h1>    //you reference the class Names using the styles variable, it can be used in the children component.
+
+</div>
+)
+
+
+So you cannot use a class defined for some other component in case of .module.css stylesheet.
+
+
+
+
+
+
