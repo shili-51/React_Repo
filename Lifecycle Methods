@@ -1,2 +1,63 @@
 When we create a react component, component goes through several stages in its lifecycle. 
 React provides us with built in methods that we can overwrite at particular stages in the lifecycle. Lifecycle methods available for class components.
+These methods do not exist for functional component.
+
+1) Mounting
+Mounting lifecycle methods are called, when an instance of a component is being created and inserted into the DOM.
+
+
+This consists of 4 methods :
+
+
+---> constructor
+
+Constructor(props) - It is a special function that will get called whenever a new component is created.
+Constructor is used for initializing state or binding the event handlers to the class instance.
+
+We should not cause side effects i.e. never make HTTP requests from within the constructor.
+We have to call a special function called super(props) - this will call the base class constructor. In our component we have access to this.props only after we have initially
+called super passing in props as an argument.
+Constructor is the only place where you are expected to change or set the state by directly overwriting this.state fields. In all other scenarios we have to use this.setstate
+
+
+---> static getDerivedStateFromProps(props,state)
+
+when the state of the component depends on changes in props over time. since this is static method it does not have access to the this keyword.
+
+
+---> render
+only required method. Read props and state and return JSX.
+Do not chane state or interact with DOM or make ajax calls.
+children components lifecycle methods are also executed.
+
+---> componentDidMount -  this method would be called only once in the whole lifecycle of a given component.
+it is invoked immediately after a component and all its children components have been rendered to the DOM.
+This can cause side effects. Ex: Interact with the DOM or perform any ajax calls to load data.
+
+
+
+
+
+
+2) Updating
+Updating lifecycle methods are called, when a component is being re-rendered as a result of changes to either its props or state.
+
+This consists of 5 methods :
+static getDerivedStateFromProps, shouldComponentUpdate, render, getSnapshotBeforeUpdate and componentDidUpdate
+
+
+
+3) Unmounting
+Unmounting lifecycle methods are called, when a component is being removed from the DOM.
+
+This consists of 1 method :
+componentWillUnmount
+
+
+
+4) Error Handling
+Error Handling is called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+
+
+This consists of 2 methods :
+static getDerivedStateFromError and componentDidCatch
