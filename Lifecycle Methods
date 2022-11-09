@@ -1,0 +1,2 @@
+When we create a react component, component goes through several stages in its lifecycle. 
+React provides us with built in methods that we can overwrite at particular stages in the lifecycle. Lifecycle methods available for class components.
