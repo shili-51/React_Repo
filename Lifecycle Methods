@@ -35,6 +35,26 @@ it is invoked immediately after a component and all its children components have
 This can cause side effects. Ex: Interact with the DOM or perform any ajax calls to load data.
 
 
+order of functions rendered when implemented
+
+LifecycleA constructor
+LifecycleA getDerivedStateFromProps
+LifecycleA render
+LifecycleA componentDidMount
+
+
+order of functions when parent component LifecycleA is rendered with child component LifecycleB
+
+LifecycleA constructor
+LifecycleA getDerivedStateFromProps
+LifecycleA render
+LifecycleB constructor
+LifecycleB getDerivedStateFromProps
+LifecycleB render
+LifecycleB componentDidMount
+LifecycleA componentDidMount
+
+
 
 
 
@@ -43,7 +63,50 @@ This can cause side effects. Ex: Interact with the DOM or perform any ajax calls
 Updating lifecycle methods are called, when a component is being re-rendered as a result of changes to either its props or state.
 
 This consists of 5 methods :
-static getDerivedStateFromProps, shouldComponentUpdate, render, getSnapshotBeforeUpdate and componentDidUpdate
+
+---> static getDerivedStateFromProps
+method is called every time a component is re-rendered.
+This method is used when the state depends upon the props of the component.
+Do not cause side effects. Ex: HTTP requests 
+
+
+---> shouldComponentUpdate
+this method receives the updated props and state and it dictates if the component should re-render or not.
+In this method we can compare the existing props and state values with the next state and prop values and return true or false to let react know whether the 
+component should update or not.
+This method is for performance optimization.
+Do not cause side effects. Ex: HTTP requests or calling the setState method.
+
+
+---> render
+Return props and state and return JSX.
+Do not change state or interact with DOM or make ajax calls.
+
+
+---> getSnapshotBeforeUpdate
+This method accepts previous props and previous state as its parameters and is called right before the changes from the virtual DOM are to be reflected in the DOM.
+Used to capture some information from the DOM.
+This method will either return null or return a value. Returned value will be passed as the third parameter to the next method.
+
+
+---> componentDidUpdate(prevProps, prevState, snapshot)
+called after the render is finished in the re-render cycles. called once in each re-render cycle. 
+you can cause side effects i.e. you can make AJAX calls.
+But before making the call you need to compare the prev props with the new props and then decide whether to make the AJAX call or not.
+
+
+Output --- LifecycleA - parent, LifecycleB - child
+
+LifecycleA getDerivedStateFromProps
+LifecycleA shouldComponentUpdate
+LifecycleA render
+LifecycleB getDerivedStateFromProps
+LifecycleB shouldComponentUpdate
+LifecycleB render
+LifecycleB getSnapshotBeforeUpdate
+LifecycleA getSnapshotBeforeUpdate
+LifecycleB componentDidUpdate
+LifecycleA componentDidUpdate
 
 
 
@@ -51,7 +114,12 @@ static getDerivedStateFromProps, shouldComponentUpdate, render, getSnapshotBefor
 Unmounting lifecycle methods are called, when a component is being removed from the DOM.
 
 This consists of 1 method :
-componentWillUnmount
+
+-->componentWillUnmount -
+method is invoked immediately before a component is unmounted and destroyed.
+Can be used to perform the clean up tasks like cancelling any network requests, removing event handlers, cancelling any subscriptions and also invalidating timers
+from settime out or set interval.
+Do not call the setstate method because the component is never re-rendered after it has been unmounted.
 
 
 
@@ -60,4 +128,5 @@ Error Handling is called when there is an error during rendering, in a lifecycle
 
 
 This consists of 2 methods :
-static getDerivedStateFromError and componentDidCatch
+static getDerivedStateFromError and componentDidCatch  - these two methods are called either when there is an error either during rendering, in a lifecycle method, or in 
+the constructor of any child component.
