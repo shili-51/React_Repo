@@ -15,6 +15,9 @@ import Inline from './Components/Inline';
 import './appStyles.css'
 import styles from './appStyles.module.css'
 import Form from './Components/Form';
+import LifecycleA from './Components/LifecycleA';
+import FragmentDemo from './Components/FragmentDemo';
+import Table from './Components/Table';
 
  class App extends Component{
   render(){
@@ -22,7 +25,10 @@ import Form from './Components/Form';
       <div className="App">
         {/* error is className from appStyles.css */}
         {/* <h1 className='error'>Error</h1> */}
-        <Form/>
+        {/* <Form/> */}
+        {/* <LifecycleA/> */}
+        {/* <FragmentDemo/> */}
+        <Table/>
         {/* success is classname from appStyles.module.css */}
         {/* <h1 className={styles.success}>Success</h1> */}
         {/* <ParentComponent/> */}
