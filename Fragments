@@ -1,0 +1,2 @@
+Fragments let you group a list of children elements without adding extra nodes to the DOM.
+This represents the idea that it wont add an actual element to the DOM.
