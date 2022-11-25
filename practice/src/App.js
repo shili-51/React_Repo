@@ -1,23 +1,25 @@
 import React, {Component} from 'react';
-import Greet from './Components/Greet';
-import Welcome from './Components/Welcome';
-import Message from './Components/Message';
-import Counter from './Components/Counter';
+// import Greet from './Components/Greet';
+// import Welcome from './Components/Welcome';
+// import Message from './Components/Message';
+// import Counter from './Components/Counter';
 import './App.css';
-import FunctionClick from './Components/FunctionClick';
-import ClassClick from './Components/ClassClick';
-import EventBind from './Components/EventBind';
-import ParentComponent from './Components/ParentComponent';
-import UserGreeting from './Components/UserGreeting';
-import NameList from './Components/NameList';
-import Stylesheet from './Components/Stylesheet';
-import Inline from './Components/Inline';
-import './appStyles.css'
-import styles from './appStyles.module.css'
-import Form from './Components/Form';
-import LifecycleA from './Components/LifecycleA';
-import FragmentDemo from './Components/FragmentDemo';
-import Table from './Components/Table';
+import ParentComp from './Components/ParentComp';
+// import FunctionClick from './Components/FunctionClick';
+// import ClassClick from './Components/ClassClick';
+// import EventBind from './Components/EventBind';
+// import ParentComponent from './Components/ParentComponent';
+// import UserGreeting from './Components/UserGreeting';
+// import NameList from './Components/NameList';
+// import Stylesheet from './Components/Stylesheet';
+// import Inline from './Components/Inline';
+// import './appStyles.css'
+// import styles from './appStyles.module.css'
+// import Form from './Components/Form';
+// import LifecycleA from './Components/LifecycleA';
+// import FragmentDemo from './Components/FragmentDemo';
+// import Table from './Components/Table';
+// import PureComp from './Components/PureComp';
 
  class App extends Component{
   render(){
@@ -28,7 +30,8 @@ import Table from './Components/Table';
         {/* <Form/> */}
         {/* <LifecycleA/> */}
         {/* <FragmentDemo/> */}
-        <Table/>
+        {/* <Table/> */}
+        <ParentComp/>
         {/* success is classname from appStyles.module.css */}
         {/* <h1 className={styles.success}>Success</h1> */}
         {/* <ParentComponent/> */}
