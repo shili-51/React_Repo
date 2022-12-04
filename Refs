@@ -1,0 +1,39 @@
+Refs make it possible to access the DOM nodes directly within react. - RefsDemo.js
+
+FIrst Use Case - When we load the page, we want the input field to be focussed.
+We do in this in 3 steps: 
+
+1) Create Ref - in constructor we define this.inputRef = React.createRef()
+
+2) to attach this ref to our input element in the render method - in the input tag we define ref={this.inputRef}
+
+3)call focus method on the input element
+
+The componentDidMount() method allows us to execute the React code when the component is already placed in the DOM (Document Object Model).
+componentDidMount(){
+        this.inputRef.current.focus()
+        console.log(this.inputRef)
+    }
+    
+
+Second Use Case - to fetch the input value
+
+With callback Ref approach we first create a property, and then create a method that assigns a property with a DOM element asked as parameter.
+
+this.cbRef = null
+      this.setCbRef = (element) => {
+        this.cbRef = element
+      }
+      
+in this method we assign method as ref like
+<input type="text" ref={this.setCbRef}/>
+
+
+in this element is accessed as 
+
+componentDidMount(){
+        if(this.cbRef){
+            this.cbRef.focus()
+        }
+        
+    }
