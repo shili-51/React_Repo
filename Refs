@@ -37,3 +37,7 @@ componentDidMount(){
         }
         
     }
+    
+If you need ref to child component from parent component it is possible - Parent - Input.js , child - FocusInput.js
+
+Component should be a class component , refs cannot be attached to functional component.
