@@ -41,3 +41,10 @@ componentDidMount(){
 If you need ref to child component from parent component it is possible - Parent - Input.js , child - FocusInput.js
 
 Component should be a class component , refs cannot be attached to functional component.
+
+
+
+Forwarding Refs : FRInput.js
+it is a technique for automatically passing a ref through a component to one of its children.
+When we click button of parent component we want to focus on child component.
+Forward ref method takes a component as a paramter - FRInput.js
