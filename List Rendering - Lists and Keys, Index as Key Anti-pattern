@@ -28,4 +28,9 @@ When to use Index as Key?
 2) The list is a static list and will not change.
 3) The list will never be reordered or filtered.
 
+If we dont specify key, react by default uses index as key.
+
+Keep this last option using index as key, if you dont have any unique id in dataset, there is one npm package that generates unique keys, we can use that first before using
+index as key.
+
 
