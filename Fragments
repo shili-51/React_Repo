@@ -1,2 +1,59 @@
 Fragments let you group a list of children elements without adding extra nodes to the DOM.
 This represents the idea that it wont add an actual element to the DOM.
+
+column.js
+
+return(
+<div>
+   <h1> Fragment </h1>
+   <p> Paragraph tag of fragment </p>
+</div>
+)
+
+App.js
+
+return (
+<div className = "App">
+</column>
+</div>
+)
+
+
+output would be - 
+
+<div className = "App">
+  <div>
+   <h1> Fragment </h1>
+   <p> Paragraph tag of fragment </p>
+  </div>
+</div>
+
+Problem - extra div in 25 line is added while rendering component through app.js when inspecting. So here Fragments come into picture, they don't add extra div of component
+while rendering and you wont be seeing extra div while inspecting page.
+
+After using Fragments output would be -
+
+<div className = "App">
+   <h1> Fragment </h1>
+   <p> Paragraph tag of fragment </p>
+</div>
+
+
+Syntax of using fragments in components - Using this we can also pass key inside fragments
+
+column.js
+
+return(
+<React.Fragment>
+   <h1> Fragment </h1>
+   <p> Paragraph tag of fragment </p>
+</React.Fragment>
+)
+
+Short form of using Fragment - drawback of this short form is we cannot pass key inside the <> these brackets.
+return(
+<>
+   <h1> Fragment </h1>
+   <p> Paragraph tag of fragment </p>
+</>
+)
