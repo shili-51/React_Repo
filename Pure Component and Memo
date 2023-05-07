@@ -1,3 +1,5 @@
+If Parent does not re render, children components will not re render.
+
 Suppose Parent component contains 2 child components - 1 regular component and 1 Pure Component.
 Whenever parent component is re rendered due to set state method for example set interval after ever 2 seconds, regular component will also get re-rendered inspite of having
 no change in its state etc, but pure component will not get re - rendered if parent component is getting rendered due to set state method, pure components only get rendered,
