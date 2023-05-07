@@ -1,3 +1,9 @@
+Suppose Parent component contains 2 child components - 1 regular component and 1 Pure Component.
+Whenever parent component is re rendered due to set state method for example set interval after ever 2 seconds, regular component will also get re-rendered inspite of having
+no change in its state etc, but pure component will not get re - rendered if parent component is getting rendered due to set state method, pure components only get rendered,
+when there is change in their state etc.
+
+
 Regular Component
 
 A regular component does not implement the shouldComponentUpdate method. It always returns true by default.
@@ -37,6 +43,8 @@ Complex Types
  
  It is a good idea to ensure that all the children components are also pure to avoid unexpected behaviour.
  Never mutate the state. Always return a new object that reflects the new state.
+ 
+ 
  
  
  
