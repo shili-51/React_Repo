@@ -1,9 +1,14 @@
+Refs are a function provided by React to access the DOM element and the React element that you might have created on your own. 
+They are used in cases where we want to change the value of a child component, without making use of props and all. 
+They have wide functionality as we can use callbacks with them. 
+
+
 Refs make it possible to access the DOM nodes directly within react. - RefsDemo.js
 
 FIrst Use Case - When we load the page, we want the input field to be focussed.
 We do in this in 3 steps: 
 
-1) Create Ref - in constructor we define this.inputRef = React.createRef()
+1) Create Ref - in constructor we define this.inputRef = React.createRef() - With create ref approach we first create reference using React.createRef()
 
 2) to attach this ref to our input element in the render method - in the input tag we define ref={this.inputRef}
 
@@ -16,10 +21,12 @@ componentDidMount(){
     }
     
 
+
+
 Second Use Case - to fetch the input value
 
-With callback Ref approach we first create a property, and then create a method that assigns a property with a DOM element asked as parameter.
 
+With callback Ref approach we first create a property, and then create a method that assigns a property with a DOM element asked as parameter.
 this.cbRef = null
       this.setCbRef = (element) => {
         this.cbRef = element
@@ -31,12 +38,17 @@ in this method we assign method as ref like
 
 in this element is accessed as 
 
+Callback Refs - React will call the ref callback with a DOM element, when the component mounts and calling with null when it unmounts. So first we need to check if a value
+exists on reference property and that it is not null.
+In callback refs we dont use .current unlike create refs.
 componentDidMount(){
         if(this.cbRef){
             this.cbRef.focus()
         }
         
     }
+    
+
     
 If you need ref to child component from parent component it is possible - Parent - Input.js , child - FocusInput.js
 
