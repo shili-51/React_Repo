@@ -10,4 +10,22 @@ We use react Dom render in index.js and mount our app component on to the root e
 application falls under the root element that is d iv element with the id root -> <div id = "root">, what react portals provide is the ability to break out of this dom tree so
 you can render a component onto a Dom node that is not under this root element.
 
-/public/index.html
+/public/index.html - add <div id="portal-root"></div> below div tag with id = "root"
+below <div id = "root">
+<div id="portal-root"></div>
+</div>
+
+Next we create a component PortalDemo.js
+import React from 'react'
+import ReactDom from 'react-dom'
+
+function PortalDemo() {
+    return ReactDom.createPortal(
+        <h1>
+            Portals demo
+        </h1>,
+        document.getElementById('portal-root')
+    )
+}
+
+export default PortalDemo
