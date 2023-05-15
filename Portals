@@ -1,0 +1,13 @@
+React Portals provide a way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
+When an element is rendered on UI, when we inspect that we see the below structure - 
+
+<div id = "root">            // this is the element in index.html
+   <div class="App"></div>   // element in index.js
+</div>
+
+We use react Dom render in index.js and mount our app component on to the root element. So when we look at the browser in the Dom tree every single react component in our
+application falls under the root element that is d iv element with the id root -> <div id = "root">, what react portals provide is the ability to break out of this dom tree so
+you can render a component onto a Dom node that is not under this root element.
+
+/public/index.html
