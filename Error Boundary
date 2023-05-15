@@ -1,0 +1,100 @@
+A class component that implements either one or both of the lifecycle methods getDerivedStateFromError or componentDidCatch becomes an error boundary.
+
+The static method getDerivedStateFromError method is used to render a fallback UI after an error is thrown and the componentDidCatch method is used to log the error information.
+
+We created a src/components/Hero.js
+
+import React from 'react'
+
+function Hero({heroName}) {
+    if(heroName === 'Joker'){
+        throw new Error('Not a hero!')
+    }
+  return (
+    <div>
+      {heroName}
+    </div>
+  )
+}
+
+export default Hero
+
+
+
+In App.js
+
+we included 3 heros inside app component
+<Hero heroName="Batman"/>
+<Hero heroName="Superman"/>
+<Hero heroName="Joker"/> //this div causes error so react is not rendering above two divs as well inspite of them being correct.
+
+To handle thi situation we will create another component ErrorBoundary.js //class component to become error boundary
+
+import React, { Component } from 'react'
+
+class ErrorBoundary extends Component {
+
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+         hasError: false
+      }
+    }
+    
+    static getDerivedStateFromError(error){
+      return {
+        hasError : true
+      }
+    }
+
+  render() {
+    if(this.state.hasError){
+        return <h1>Something went wrong</h1>
+    }
+    return this.props.children
+  }
+}
+
+export default ErrorBoundary
+
+And wrap the entire hero component with error boundary tag
+
+<ErrorBoundary>
+          <Hero heroName="Batman" />
+          <Hero heroName="Superman" />
+          <Hero heroName="Joker" />
+</ErrorBoundary>
+
+Error Boundaries will catch the error and display a fallback UI which in our case is the text something went wrong. if there is error, everything inside the error boundary will
+be hidden and we will the text mentioned in error boundary component.
+So its not the good practice to hide those tags as well which dont have error in them.
+would modify the App component with below code - this is render all the correct components and will show message something went wrong if there is any issue in any tag.
+        <ErrorBoundary>
+          <Hero heroName="Batman" />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Hero heroName="Superman" />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Hero heroName="Joker" />
+        </ErrorBoundary>
+
+
+//info is the information regarding error
+Second ErrorBoundary method - componentDidCatch(error, info){
+        console.log(error)
+        console.log(info)
+    }
+    
+    
+Error Boundaries catch error during rendering in lifecycle methods and in constructor of the whole tree below them, how ever they don not catch error inside event handlers
+if you have an onclick handler and want to catch an error, you need to use regular try catch statements not error boundaries
+
+Error Boundaries are React components that catch javascript error in their child component tree, log these errors and display a fall-back UI.
+A class component becomes an Error Boundary by defininf either ot both of getDerivedStateFromError and componentDidCatch lifecycle methods.
+in our case we set the hasError state to true which causes the fallback UI to be rendered.
+The placement of the error boundary also matters as it controls if the entire app should have the fall-back UI or just the component causing the problem.
+
+Error Boundaries provide a way to gracefully handle error in application code.
+
