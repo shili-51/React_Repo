@@ -108,6 +108,7 @@ const UpdatedComponent = OriginalComponent => {           -> const withCounter =
         render() {
             return <OriginalComponent                            -> return <WrappedComponent
                 count={this.state.count} incrementCount={this.incrementCount}
+                                                                  ->   {...this.props}
             />
         }
     }
@@ -128,7 +129,7 @@ class ClickCounter extends Component {
         return (
             <div>
                 <button onClick={incrementCount}>
-                    Clicked {count} times
+                    Clicked {count} times                 ->  {this.props.name}   Clicked {count} times
                 </button>
             </div>
         )
@@ -157,6 +158,83 @@ export class HoverCounter extends Component {
 }
 
 export default UpdatedComponent(HoverCounter)      -> export default withCounter(HoverCounter)
+
+
+
+################## Passing Prop to HOC Function ##################################################
+
+When we pass any prop from App.js to our components, they will not render that prop value on UI, for that we need to paas remaining props to wrapped component using spread 
+operator  {...this.props}. So when you create HOC , please make sure to pass rest of props.
+
+App.js - <ClickCounter name='Shilpy'/>
+
+################################################################### Passing parameter to HOC Function ##############################################
+For example - we want to increment hoverCounter by 10 on each hover
+and click counter by 5
+
+
+
+
+Modified HOC Code (after handling Passing Props and passing arguments ) #############################################################
+
+import React from "react";
+
+// Higher order component UpdatedComponent
+// HOC accepts original component and Returns new component
+const withCounter = (WrappedComponent, incrementNumber) => {
+    class WithCounter extends React.Component {
+
+        //common functionality we want to share with click counter and hover counter
+        constructor(props) {
+            super(props)
+
+            this.state = {
+                count: 0
+            }
+        }
+
+        incrementCount = () => {
+            this.setState(prevState => {
+                return { count: prevState.count + incrementNumber }
+            })
+        }
+        render() {
+            return <WrappedComponent
+                count={this.state.count} incrementCount={this.incrementCount}
+                {...this.props}
+            />
+        }
+    }
+    return WithCounter
+}
+
+export default withCounter
+
+
+######################################################################## click Counter #######################################################################
+import React, { Component } from 'react'
+import withCounter from './withCounter'
+
+class ClickCounter extends Component {
+
+    render() {
+        const { count, incrementCount } = this.props
+        return (
+            <div>
+                <button onClick={incrementCount}>
+                 {this.props.name} Clicked {count} times
+                </button>
+            </div>
+        )
+    }
+}
+
+export default withCounter(ClickCounter,5)
+
+
+
+
+
 
 
 
