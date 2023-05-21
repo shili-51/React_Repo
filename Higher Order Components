@@ -1,0 +1,76 @@
+ClickCounter.js - src/components/ClickCounter.js
+//////////// on clicking on button count is incremented on each click
+
+import React, { Component } from 'react'
+
+class ClickCounter extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            count: 0
+        }
+    }
+
+    incrementCount = () => {
+        this.setState(prevState => {
+            return { count: prevState.count + 1 }
+        })
+    }
+
+    render() {
+        const { count } = this.state
+        return (
+            <div>
+                <button onClick={this.incrementCount}>Clicked {count} times</button>
+            </div>
+        )
+    }
+}
+
+export default ClickCounter
+
+
+HoverCounter.js -  src/components/HoverCounter.js
+
+import React, { Component } from 'react'
+
+export class HoverCounter extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            count: 0
+        }
+    }
+
+    incrementCount = () => {
+        this.setState(prevState => {
+            return { count: prevState.count + 1 }
+        })
+    }
+
+    render() {
+        const { count } = this.state
+        return (
+            <div>
+                <h2 onMouseOver={this.incrementCount}>Hovered {count} times</h2>
+            </div>
+        )
+    }
+}
+
+export default HoverCounter
+
+Now another requirement comes that we need to display the count of pressing keys from keyboard, in same way as hoverCounter and clickCounter, we can implement keyCounter,
+but we realise that the code for incrementing count is written again and again in every component i.e. its duplicating, in clickcounter and hovercounter we have increment count 
+functionality which can be reused once written but same code is written explicitly for all components separately.
+
+So one approach is we lift this common counter logic to parent component and pass down handler as prop, so define counter functionality into app component, and provide state 
+and handler as prop to clickcounter and hovercounter, but shortcoming is that parent component must be same for all the components in order to write this common code logic
+in parent component which can be accessed as state or prop in child components.
+
+So here comes the concept of Higher Order Components.
+
+Why Higher Order Components? 
+To share common functionality between components.
