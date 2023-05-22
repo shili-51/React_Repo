@@ -1,0 +1,99 @@
+Another pattern for sharing code between React components which is Render Prop Method.
+
+################################################################################################## ClickCounter.js #######################################################
+import React, { Component } from 'react'
+
+class ClickCounterTwo extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            count: 0
+        }
+    }
+
+    incrementCount = () => {
+        this.setState(prevState => {
+            return { count: prevState.count + 1 }
+        })
+    }
+
+    render() {
+        const { count } = this.state
+        return (
+            <div>
+                <button onClick={this.incrementCount}>Clicked {count} times</button>
+            </div>
+        )
+    }
+}
+
+export default ClickCounterTwo
+
+#####################################################################################################  HoverCounter.js ##############################################
+
+import React, { Component } from 'react'
+
+class HoverCounterRwo extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            count: 0
+        }
+    }
+
+    incrementCount = () => {
+        this.setState(prevState => {
+            return { count: prevState.count + 1 }
+        })
+    }
+
+    render() {
+        const { count } = this.state
+        return (
+            <div>
+                <h2 onMouseOver={this.incrementCount}>Hovered {count} times</h2>
+            </div>
+        )
+    }
+}
+
+export default HoverCounterRwo
+
+
+#######################################################################################################################################################
+
+In both of above codes there is common code to increment count by 1, so instead of re-using the common code we are writing it again and again. So in order to reuse same
+common code among different components one method is to create HOC (Higher order Components) another method is to render Props.
+
+In React, it is possible to use a Prop whose value is a function to control what is actually rendered by a component. Render Props method is based on this.
+For Example -
+
+############################## In App.js ###############################################################
+
+<User render={(isLoggedIn) => isLoggedIn ? 'Shilpy' : 'Guest'}/>
+
+##############################################################################     User.js    #################################
+
+import React, { Component } from 'react'
+
+class User extends Component {
+    render() {
+        return (
+            <div>
+                {this.props.render(false)}
+            </div>
+        )
+    }
+}
+
+export default User
+
+#############################################################################################
+
+The term "render prop" refers to a technique for sharing code between React Components using a Prop whose value is a function.
+
+
+
+
