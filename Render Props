@@ -94,6 +94,89 @@ export default User
 
 The term "render prop" refers to a technique for sharing code between React Components using a Prop whose value is a function.
 
+After using Render Props -
+#########################################################
+App.js
+<Counter_Render_Props
+          render={(count, incrementCount) => (
+            <ClickCounterTwo count={count} incrementCount={incrementCount} />
+          )} />
+        <Counter_Render_Props
+          render={(count, incrementCount) => (
+            <HoverCounterRwo count={count} incrementCount={incrementCount} />
+          )} />
+          
+#####################################################################  Click Counter two.js #####################################
+import React, { Component } from 'react'
+
+class ClickCounterTwo extends Component {
+
+    render() {
+        const { count, incrementCount } = this.props
+        return (
+            <div>
+                <button onClick={incrementCount}>Clicked {count} times</button>
+            </div>
+        )
+    }
+}
+
+export default ClickCounterTwo
+
+####################################################################### HoverCounterRwo.js ######################################################
+
+import React, { Component } from 'react'
+
+class HoverCounterRwo extends Component {
+
+    render() {
+        const { count, incrementCount } = this.props
+        return (
+            <div>
+                <h2 onMouseOver={incrementCount}>Hovered {count} times</h2>
+            </div>
+        )
+    }
+}
+
+export default HoverCounterRwo
+
+############################# Render Prop compnent containing common code which is shared by click counter and hovercounter #####################################################################
+
+import React, { Component } from 'react'
+
+
+// Container Component to implement common functionality
+// that is state and increment count method
+class Counter_Render_Props extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            count: 0
+        }
+    }
+
+    incrementCount = () => {
+        this.setState(prevState => {
+            return { count: prevState.count + 1 }
+        })
+    }
+
+  render() {
+    return (
+      <div>
+        {this.props.render(this.state.count, this.incrementCount)}
+      </div>
+    )
+  }
+}
+
+export default Counter_Render_Props
+
+
+
+
 
 
 
