@@ -69,4 +69,6 @@ class ComponentF extends Component {
 
 export default ComponentF
 
+We can set default value to the context. Default value is set while creating the context, it is passed as an arguement in createContext method.
+
         
