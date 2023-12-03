@@ -1,6 +1,6 @@
 # React_Repo
 
-This is my React Progress.
+React JS notes
 
 -> npm create vite@latest
 -> Enter Project Name
