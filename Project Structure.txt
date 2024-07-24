@@ -1,0 +1,9 @@
+
+1) node_modules/ has all the installed node packages
+2) public/ Directory: Contains static files that dont change
+3) src/ Directory: Main folder for the react code.
+   a) components/ : Reusable parts of the UI, like buttons or headers
+   b) assets/ : Images, fonts, and other static files.
+   c) styles/ : CSS or stylesheets.
+4) package.json contains information about this project like name, version, dependencies on other react packages.
+5) vite.config.js contains vit config
